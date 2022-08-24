@@ -12,7 +12,6 @@ config_version=4
 
 config/name="game"
 run/main_scene="res://main.tscn"
-run/low_processor_mode=true
 config/icon="res://icon.png"
 
 [display]
@@ -55,8 +54,7 @@ gles2/compatibility/disable_half_float=true
 gles3/shaders/max_simultaneous_compiles=1
 gles3/shaders/shader_cache_size_mb=128
 quality/lightmapping/use_bicubic_sampling.mobile=true
-cpu_lightmapper/quality/medium_quality_ray_count=64
-cpu_lightmapper/quality/high_quality_ray_count=64
-cpu_lightmapper/quality/ultra_quality_ray_count=64
+cpu_lightmapper/quality/low_quality_ray_count=512
+cpu_lightmapper/quality/medium_quality_ray_count=512
 quality/depth/hdr.mobile=true
 environment/default_environment="res://default_env.tres"
