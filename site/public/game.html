@@ -3,8 +3,37 @@
 <head>
 	<meta charset='utf-8' />
 	<meta name='viewport' content='width=device-width, user-scalable=no' />
+	<link id='-gd-engine-icon' rel='icon' type='image/png' href='favicon.png' />
 	<title>game</title>
 	<style type='text/css'>
+
+		#exampleImage { cursor:zoom-in; }
+		#exampleImage:-webkit-full-screen { cursor:zoom-out; }
+		#exampleImage:-moz-full-screen { cursor:zoom-out; }
+		#exampleImage:-ms-fullscreen { cursor:zoom-out; }
+		#exampleImage:fullscreen { cursor:zoom-out; }
+        :-moz-any-link:focus {
+            outline: none;
+        }
+        .rotate180 {
+            -webkit-transform: rotate(180deg);
+            -moz-transform: rotate(180deg);
+            -o-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+            transform: rotate(180deg);
+        }
+        
+        .rotate0 {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        
+        button {
+            outline:none;  
+        }
 
 		body {
 			touch-action: none;
@@ -80,7 +109,6 @@
 		}
 
 		#status-indeterminate {
-			height: 42px;
 			visibility: visible;
 			position: relative;
 		}
@@ -121,6 +149,9 @@
 		HTML5 canvas appears to be unsupported in the current browser.<br />
 		Please try updating or use a different browser.
 	</canvas>
+<div style="z-index:99;position:absolute;top:0;right:0;">
+  <button id="btnFullscreen" type="button" style="border:0px solid black; background-color: transparent;"><img src="full_button.png" id="button_image" onclick="rotate(this)" class="rotate0" width="32" height="32" ></button>
+</div>
 	<div id='status'>
 		<div id='status-progress' style='display: none;' oncontextmenu='event.preventDefault();'><div id ='status-progress-inner'></div></div>
 		<div id='status-indeterminate' style='display: none;' oncontextmenu='event.preventDefault();'>
@@ -139,7 +170,7 @@
 	<script type='text/javascript' src='game.js'></script>
 	<script type='text/javascript'>//<![CDATA[
 
-		const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"executable":"game","experimentalVK":false,"fileSizes":{"game.pck":667072,"game.wasm":13788612},"focusCanvas":true,"gdnativeLibs":[]};
+		const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"executable":"game","experimentalVK":false,"fileSizes":{"game.pck":20378688,"game.wasm":13788612},"focusCanvas":true,"gdnativeLibs":[]};
 		var engine = new Engine(GODOT_CONFIG);
 
 		(function() {
@@ -243,6 +274,51 @@
 			}
 		})();
 	//]]></script>
+<script>
+	function rotate(div) {
+	  var className = button_image.getAttribute("class");
+	  if(className=="rotate0") {
+	    button_image.className = "rotate180";
+	  }
+	  else{
+	    div.className = "rotate0";
+	  }
+	}
+	    
+	    
+	function toggleFullscreen(elem) {
+	  elem = elem || document.documentElement;
+	  if (!document.fullscreenElement && !document.mozFullScreenElement &&
+	    !document.webkitFullscreenElement && !document.msFullscreenElement) {
+	    if (elem.requestFullscreen) {
+	      elem.requestFullscreen();
+	    } else if (elem.msRequestFullscreen) {
+	      elem.msRequestFullscreen();
+	    } else if (elem.mozRequestFullScreen) {
+	      elem.mozRequestFullScreen();
+	    } else if (elem.webkitRequestFullscreen) {
+	      elem.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+	    }
+	  } else {
+	    if (document.exitFullscreen) {
+	      document.exitFullscreen();
+	    } else if (document.msExitFullscreen) {
+	      document.msExitFullscreen();
+	    } else if (document.mozCancelFullScreen) {
+	      document.mozCancelFullScreen();
+	    } else if (document.webkitExitFullscreen) {
+	      document.webkitExitFullscreen();
+	    }
+	  }
+	}
+
+	document.getElementById('btnFullscreen').addEventListener('click', function() {
+	  toggleFullscreen();
+	});
+
+	document.getElementById('exampleImage').addEventListener('click', function() {
+	  toggleFullscreen(this);
+	});
+	</script>
 </body>
 </html>
-
