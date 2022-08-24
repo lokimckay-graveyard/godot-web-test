@@ -1,0 +1,16 @@
+{
+  "name": "godot-web-test",
+  "workspaces": [
+    "site"
+  ],
+  "scripts": {
+    "dev": "run-s build:game \"site -- dev\"",
+    "build": "run-s build:*",
+    "build:game": "sh ./game/ci/build.sh",
+    "build:site": "npm run site build",
+    "site": "npm run -w site --"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}
