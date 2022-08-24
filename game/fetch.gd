@@ -14,5 +14,5 @@ func onPressed():
 	setLabel("LOADING")
 	requester.request("https://jsonplaceholder.typicode.com/todos/1")
 
-func onRequestCompleted(result, response_code, headers, body):
+func onRequestCompleted(_result, _response_code, _headers, body):
 	setLabel(body.get_string_from_utf8())

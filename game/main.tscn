@@ -72,6 +72,9 @@ script = ExtResource( 2 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.652257, 0.757998, 0, -0.757998, 0.652257, 0, 6.09171, 0 )
+
+[node name="DirectionalLight2" type="DirectionalLight" parent="."]
+transform = Transform( -4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0, 4.13999, 0 )
 light_energy = 0.5
 
 [connection signal="pressed" from="Control/VBoxContainer/Button" to="Control/VBoxContainer/Button" method="onPressed"]
